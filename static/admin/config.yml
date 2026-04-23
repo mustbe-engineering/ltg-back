@@ -1,8 +1,8 @@
 backend:
-  name: netlify
-  repo: mustbe-engineering/ltg-back
+  name: git-gateway
   branch: main
-  site_domain: cms.ladiesthegathering.com
+
+local_backend: true
 
 media_folder: "static/images"
 public_folder: "/images"
