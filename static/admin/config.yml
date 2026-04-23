@@ -2,6 +2,11 @@ backend:
   name: git-gateway
   branch: main
 
+i18n:
+  structure: multiple_folders
+  locales: [es, en]
+  default_locale: es
+
 local_backend: true
 
 media_folder: "static/images"
@@ -14,44 +19,49 @@ collections:
   # --- Blog ---
   - name: "blog"
     label: "Blog"
-    folder: "content/blog"
+    folder: "content/es/blog"
     create: true
+    i18n: true
     slug: "{{slug}}"
     fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Author", name: "author", widget: "string"}
-      - {label: "Category", name: "category", widget: "string"}
-      - {label: "Featured Image", name: "image", widget: "image"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Title", name: "title", widget: "string", i18n: true}
+      - {label: "Publish Date", name: "date", widget: "datetime", i18n: "duplicate"}
+      - {label: "Author", name: "author", widget: "string", i18n: "duplicate"}
+      - {label: "Category", name: "category", widget: "string", i18n: "duplicate"}
+      - {label: "Featured Image", name: "image", widget: "image", i18n: "duplicate"}
+      - {label: "Body", name: "body", widget: "markdown", i18n: true}
 
   # --- Events ---
   - name: "events"
     label: "Eventos"
-    folder: "content/events"
+    folder: "content/es/events"
     create: true
+    i18n: true
     slug: "{{slug}}"
     fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Date", name: "date", widget: "datetime"}
-      - {label: "Location", name: "location", widget: "string"}
-      - {label: "Type", name: "type", widget: "select", options: ["Insignia", "Online", "Principiantes"]}
-      - {label: "Highlight", name: "highlight", widget: "boolean", default: false}
-      - {label: "Description", name: "description", widget: "text"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Title", name: "title", widget: "string", i18n: true}
+      - {label: "Event Date", name: "date", widget: "datetime", i18n: "duplicate"}
+      - {label: "Location", name: "location", widget: "string", i18n: "duplicate"}
+      - {label: "Type", name: "type", widget: "string", i18n: "duplicate"}
+      - {label: "Description", name: "description", widget: "text", i18n: true}
+      - {label: "Highlight", name: "highlight", widget: "boolean", i18n: "duplicate"}
+      - {label: "Body", name: "body", widget: "markdown", i18n: true}
 
   # --- Podcast ---
   - name: "podcast"
     label: "Podcast"
-    folder: "content/podcast"
+    folder: "content/es/podcast"
     create: true
+    i18n: true
+    slug: "{{slug}}"
     fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Guest", name: "guest", widget: "string"}
-      - {label: "Duration", name: "duration", widget: "string", placeholder: "e.g. 45 min"}
-      - {label: "Date", name: "date", widget: "datetime"}
-      - {label: "Description", name: "description", widget: "text"}
-      - {label: "Audio URL", name: "audio_url", widget: "string"}
+      - {label: "Title", name: "title", widget: "string", i18n: true}
+      - {label: "Release Date", name: "date", widget: "datetime", i18n: "duplicate"}
+      - {label: "Duration", name: "duration", widget: "string", i18n: "duplicate"}
+      - {label: "Guest", name: "guest", widget: "string", i18n: "duplicate"}
+      - {label: "Description", name: "description", widget: "text", i18n: true}
+      - {label: "Audio URL", name: "audio_url", widget: "string", i18n: "duplicate"}
+      - {label: "Body", name: "body", widget: "markdown", i18n: true}
 
   # --- Pages (Single Files) ---
   - name: "pages"
@@ -79,15 +89,17 @@ collections:
 
       - name: "manifesto"
         label: "Manifiesto"
-        file: "content/manifesto.md"
+        file: "content/es/manifesto.md"
+        i18n: true
         fields:
-          - {label: "Title", name: "title", widget: "string"}
-          - {label: "Quote", name: "quote", widget: "string"}
+          - {label: "Title", name: "title", widget: "string", i18n: true}
+          - {label: "Quote", name: "quote", widget: "text", i18n: true}
           - label: "Principles"
             name: "principles"
             widget: "list"
+            i18n: true
             fields:
-              - {label: "Number", name: "number", widget: "string"}
-              - {label: "Title", name: "title", widget: "string"}
-              - {label: "Body", name: "body", widget: "text"}
-          - {label: "Footer Text", name: "footer_text", widget: "string"}
+              - {label: "Number", name: "number", widget: "number", i18n: "duplicate"}
+              - {label: "Title", name: "title", widget: "string", i18n: true}
+              - {label: "Body", name: "body", widget: "text", i18n: true}
+          - {label: "Footer Text", name: "footer_text", widget: "string", i18n: true}

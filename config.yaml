@@ -1,6 +1,14 @@
-baseURL: 'https://cms.ladiesthegathering.com/'
-languageCode: 'es'
-title: 'Ladies The Gathering CMS'
+defaultContentLanguage: 'es'
+
+languages:
+  es:
+    languageName: 'Español'
+    contentDir: 'content/es'
+    weight: 1
+  en:
+    languageName: 'English'
+    contentDir: 'content/en'
+    weight: 2
 
 # Output Configuration for Headless
 outputs:
