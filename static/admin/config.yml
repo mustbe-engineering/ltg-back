@@ -45,6 +45,7 @@ collections:
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Guest", name: "guest", widget: "string"}
+      - {label: "Duration", name: "duration", widget: "string", placeholder: "e.g. 45 min"}
       - {label: "Date", name: "date", widget: "datetime"}
       - {label: "Description", name: "description", widget: "text"}
       - {label: "Audio URL", name: "audio_url", widget: "string"}
@@ -64,7 +65,7 @@ collections:
             fields:
               - {label: "Badge", name: "badge", widget: "string"}
               - {label: "Title", name: "title", widget: "string"}
-              - {label: "Subtitle", name: "description", widget: "text"}
+              - {label: "Description", name: "description", widget: "text"}
           - label: "Feature Section"
             name: "feature_section"
             widget: "object"
@@ -72,3 +73,18 @@ collections:
               - {label: "Badge", name: "badge", widget: "string"}
               - {label: "Title", name: "title", widget: "string"}
               - {label: "Description", name: "description", widget: "text"}
+
+      - name: "manifesto"
+        label: "Manifiesto"
+        file: "content/manifesto.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Quote", name: "quote", widget: "string"}
+          - label: "Principles"
+            name: "principles"
+            widget: "list"
+            fields:
+              - {label: "Number", name: "number", widget: "string"}
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Body", name: "body", widget: "text"}
+          - {label: "Footer Text", name: "footer_text", widget: "string"}

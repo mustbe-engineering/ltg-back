@@ -16,5 +16,5 @@
 {{- dict 
   "title" .Title 
   "permalink" .RelPermalink
-  "items" $list 
+  "posts" $list 
 | jsonify -}}
