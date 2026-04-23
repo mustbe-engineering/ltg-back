@@ -2,7 +2,7 @@ baseURL: 'https://cms.ladiesthegathering.com/'
 languageCode: 'es'
 title: 'Ladies The Gathering CMS'
 
-# Output Configuration for Headless Mode
+# Output Configuration for Headless
 outputs:
   home: ["JSON"]
   page: ["JSON"]
