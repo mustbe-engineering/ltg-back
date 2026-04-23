@@ -1,0 +1,13 @@
+{
+  "name": "ltg-hugo-cms",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "http-server public -p $PORT --cors"
+  },
+  "dependencies": {
+    "http-server": "^14.1.1"
+  },
+  "engines": {
+    "node": "20.x"
+  }
+}

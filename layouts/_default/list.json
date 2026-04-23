@@ -1,0 +1,18 @@
+{{- $list := slice -}}
+{{- range .Pages -}}
+  {{- $params := .Params -}}
+  {{- $item := dict
+    "id" .File.UniqueID
+    "slug" .File.BaseFileName
+    "title" .Title
+    "date" (.Date.Format "02 January 2006")
+    "excerpt" .Summary
+    "content" .Content
+  -}}
+  {{- $item = merge $item $params -}}
+  {{- $list = $list | append $item -}}
+{{- end -}}
+{{- dict 
+  "title" .Title 
+  "posts" $list 
+| jsonify -}}

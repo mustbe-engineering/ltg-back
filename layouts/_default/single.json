@@ -1,0 +1,9 @@
+{{- $params := .Params -}}
+{{- $base := dict
+  "id" .File.UniqueID
+  "slug" .File.BaseFileName
+  "title" .Title
+  "date" (.Date.Format "02 January 2006")
+  "content" .Content
+-}}
+{{- merge $base $params | jsonify -}}

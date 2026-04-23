@@ -1,0 +1,6 @@
+{{- $data := .Params -}}
+{{- dict 
+  "hero" $data.hero 
+  "feature_section" $data.feature_section 
+  "newsletter" $data.newsletter 
+| jsonify -}}

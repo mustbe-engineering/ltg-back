@@ -1,0 +1,26 @@
+baseURL: 'https://cms.ladiesthegathering.com/'
+languageCode: 'es'
+title: 'Ladies The Gathering CMS'
+
+# Output Configuration for Headless Mode
+outputs:
+  home: ["JSON"]
+  page: ["JSON"]
+  section: ["JSON"]
+  taxonomy: ["JSON"]
+  term: ["JSON"]
+
+# Allow unsafe HTML in markdown (for rich content)
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+# Taxonomies
+taxonomies:
+  category: "categories"
+  tag: "tags"
+
+# Build options
+buildFuture: true
+buildDrafts: false
