@@ -4,9 +4,6 @@ backend:
   branch: main
   site_domain: cms.ladiesthegathering.com
 
-# Local backend for development (run `npx @sveltia/cms-bridge` locally)
-local_backend: true
-
 media_folder: "static/images"
 public_folder: "/images"
 
