@@ -1,5 +1,5 @@
 backend:
-  name: git-gateway
+  name: netlify
   branch: main
 
 # Local backend for development (run `npx @sveltia/cms-bridge` locally)
