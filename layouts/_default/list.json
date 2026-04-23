@@ -5,7 +5,8 @@
     "id" .File.UniqueID
     "slug" .File.BaseFileName
     "title" .Title
-    "date" (.Date.Format "02 January 2006")
+    "date" (.Date.Format "2006-01-02T15:04:05Z07:00")
+    "permalink" .RelPermalink
     "excerpt" .Summary
     "content" .Content
   -}}
@@ -14,5 +15,6 @@
 {{- end -}}
 {{- dict 
   "title" .Title 
-  "posts" $list 
+  "permalink" .RelPermalink
+  "items" $list 
 | jsonify -}}
