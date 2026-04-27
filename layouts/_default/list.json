@@ -3,7 +3,7 @@
   {{- $params := .Params -}}
   {{- $item := dict
     "id" .File.UniqueID
-    "slug" .File.BaseFileName
+    "slug" .File.TranslationBaseName
     "title" .Title
     "date" (.Date.Format "2006-01-02T15:04:05Z07:00")
     "permalink" .RelPermalink
@@ -13,8 +13,9 @@
   {{- $item = merge $item $params -}}
   {{- $list = $list | append $item -}}
 {{- end -}}
-{{- dict 
+{{- $base := dict 
   "title" .Title 
   "permalink" .RelPermalink
   "posts" $list 
-| jsonify -}}
+-}}
+{{- merge $base .Params | jsonify -}}
