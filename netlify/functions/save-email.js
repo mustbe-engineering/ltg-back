@@ -2,7 +2,29 @@ const { GoogleSpreadsheet } = require('google-spreadsheet');
 const { JWT } = require('google-auth-library');
 
 exports.handler = async (event) => {
-  if (event.httpMethod !== "POST") return { statusCode: 405, body: "Method Not Allowed" };
+  const headers = {
+    'Access-Control-Allow-Origin': 'https://ladiesthegathering.com',
+    'Access-Control-Allow-Headers': 'Content-Type, Accept',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Content-Type': 'application/json'
+  };
+
+  // Handle the browser's pre-flight check
+  if (event.httpMethod === "OPTIONS") {
+    return { 
+      statusCode: 200, 
+      headers, 
+      body: JSON.stringify({ message: "OK" }) 
+    };
+  }
+
+  if (event.httpMethod !== "POST") {
+    return { 
+      statusCode: 405, 
+      headers, 
+      body: JSON.stringify({ message: "Method Not Allowed" }) 
+    };
+  }
 
   try {
     const { email, recaptchaToken } = JSON.parse(event.body);
@@ -13,7 +35,11 @@ exports.handler = async (event) => {
     const recaptchaResult = await recResponse.json();
 
     if (!recaptchaResult.success) {
-      return { statusCode: 400, body: JSON.stringify({ message: "reCAPTCHA fallido" }) };
+      return { 
+        statusCode: 400, 
+        headers, 
+        body: JSON.stringify({ message: "reCAPTCHA fallido" }) 
+      };
     }
 
     // 2. Auth with Google
@@ -34,9 +60,17 @@ exports.handler = async (event) => {
       Date: new Date().toLocaleString("es-MX", { timeZone: "America/Tijuana" }) 
     });
 
-    return { statusCode: 200, body: JSON.stringify({ message: "¡Suscripción exitosa!" }) };
+    return { 
+      statusCode: 200, 
+      headers, 
+      body: JSON.stringify({ message: "¡Suscripción exitosa!" }) 
+    };
   } catch (error) {
     console.error(error);
-    return { statusCode: 500, body: JSON.stringify({ message: "Error interno", error: error.message }) };
+    return { 
+      statusCode: 500, 
+      headers, 
+      body: JSON.stringify({ message: "Error interno", error: error.message }) 
+    };
   }
 };
