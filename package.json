@@ -5,6 +5,7 @@
     "start": "http-server public -p $PORT --cors"
   },
   "dependencies": {
+    "google-auth-library": "^9.15.0",
     "google-spreadsheet": "^5.2.0",
     "http-server": "^14.1.1"
   },
