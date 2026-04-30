@@ -1,6 +1,3 @@
-const { GoogleSpreadsheet } = require('google-spreadsheet');
-const { JWT } = require('google-auth-library');
-
 exports.handler = async (event) => {
   const headers = {
     'Access-Control-Allow-Origin': 'https://ladiesthegathering.com',
@@ -8,21 +5,8 @@ exports.handler = async (event) => {
     'Access-Control-Allow-Methods': 'POST, OPTIONS'
   };
 
-  // Handle the browser's pre-flight check
   if (event.httpMethod === "OPTIONS") {
-    return { 
-      statusCode: 200, 
-      headers, 
-      body: JSON.stringify({ message: "CORS Preflight OK" }) 
-    };
-  }
-
-  if (event.httpMethod !== "POST") {
-    return { 
-      statusCode: 405, 
-      headers, 
-      body: JSON.stringify({ message: "Method Not Allowed" }) 
-    };
+    return { statusCode: 200, headers, body: "OK" };
   }
 
   try {
@@ -34,14 +18,13 @@ exports.handler = async (event) => {
     const recaptchaResult = await recResponse.json();
 
     if (!recaptchaResult.success) {
-      return { 
-        statusCode: 400, 
-        headers, 
-        body: JSON.stringify({ message: "reCAPTCHA fallido" }) 
-      };
+      return { statusCode: 400, headers, body: JSON.stringify({ message: "reCAPTCHA error" }) };
     }
 
-    // 2. Auth with Google
+    // 2. Dynamic Import for ESM Module (The Fix for your log error)
+    const { GoogleSpreadsheet } = await import('google-spreadsheet');
+    const { JWT } = await import('google-auth-library');
+
     const serviceAccountAuth = new JWT({
       email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
       key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
@@ -49,27 +32,22 @@ exports.handler = async (event) => {
     });
 
     const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID, serviceAccountAuth);
-    
     await doc.loadInfo();
     const sheet = doc.sheetsByIndex[0];
     
-    // Make sure your Google Sheet headers match these keys!
     await sheet.addRow({ 
       Email: email, 
-      Date: new Date().toLocaleString("es-MX", { timeZone: "America/Tijuana" }) 
+      Date: new Date().toISOString() 
     });
 
-    return { 
-      statusCode: 200, 
-      headers, 
-      body: JSON.stringify({ message: "¡Suscripción exitosa!" }) 
-    };
+    return { statusCode: 200, headers, body: JSON.stringify({ message: "Success" }) };
+
   } catch (error) {
-    console.error(error);
+    console.error("Function Error:", error);
     return { 
       statusCode: 500, 
       headers, 
-      body: JSON.stringify({ message: "Error interno", error: error.message }) 
+      body: JSON.stringify({ error: error.message }) 
     };
   }
 };
