@@ -22,6 +22,6 @@ principles:
       forma de arte compartido.
   - number: IV
     title: Saludos, esto es una prueba
-    body: Wow, esta funcionando
+    body: Wow, esta funcionando jaja saludos
 footer_text: Sellado y decretado por la comunidad de Ladies The Gathering.
 ---
