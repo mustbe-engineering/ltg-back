@@ -5,8 +5,7 @@ exports.handler = async (event) => {
   const headers = {
     'Access-Control-Allow-Origin': 'https://ladiesthegathering.com',
     'Access-Control-Allow-Headers': 'Content-Type, Accept',
-    'Access-Control-Allow-Methods': 'POST, OPTIONS',
-    'Content-Type': 'application/json'
+    'Access-Control-Allow-Methods': 'POST, OPTIONS'
   };
 
   // Handle the browser's pre-flight check
@@ -14,7 +13,7 @@ exports.handler = async (event) => {
     return { 
       statusCode: 200, 
       headers, 
-      body: JSON.stringify({ message: "OK" }) 
+      body: JSON.stringify({ message: "CORS Preflight OK" }) 
     };
   }
 
