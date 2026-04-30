@@ -1,10 +1,11 @@
 ---
-title: "Etiqueta en la Mesa de Commander"
+title: Etiqueta en la Mesa de Commander JAJAS
 date: 2026-10-10T12:00:00-05:00
-author: "Lady Arwen"
-category: "Estrategia"
-image: "/images/etiqueta.jpg"
-excerpt: "¿Cuándo es correcto atacar a quien no tiene bloqueadores? ¿Se vale romper tratos? Hablamos de las reglas no escritas."
+author: Lady Arwen
+category: Estrategia
+image: /images/etiqueta.jpg
+excerpt: ¿Cuándo es correcto atacar a quien no tiene bloqueadores? ¿Se vale
+  romper tratos? Hablamos de las reglas no escritas.
 ---
 
 # La Política de la Corte
