@@ -1,36 +1,42 @@
 const { GoogleSpreadsheet } = require('google-spreadsheet');
+const { JWT } = require('google-auth-library');
 
 exports.handler = async (event) => {
-  if (event.httpMethod !== "POST") {
-    return { statusCode: 405, body: "Method Not Allowed" };
-  }
+  if (event.httpMethod !== "POST") return { statusCode: 405, body: "Method Not Allowed" };
 
-  const { email, recaptchaToken } = JSON.parse(event.body);
-
-  // 1. Verify reCAPTCHA
-  const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`;
-  const response = await fetch(verifyUrl, { method: 'POST' });
-  const recaptchaResult = await response.json();
-
-  if (!recaptchaResult.success) {
-    return { statusCode: 400, body: JSON.stringify({ message: "reCAPTCHA verification failed" }) };
-  }
-
-  // 2. Save to Google Sheets
   try {
-    const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID);
-    
-    await doc.useServiceAccountAuth({
-      client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-      private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+    const { email, recaptchaToken } = JSON.parse(event.body);
+
+    // 1. Verify reCAPTCHA
+    const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`;
+    const recResponse = await fetch(verifyUrl, { method: 'POST' });
+    const recaptchaResult = await recResponse.json();
+
+    if (!recaptchaResult.success) {
+      return { statusCode: 400, body: JSON.stringify({ message: "reCAPTCHA fallido" }) };
+    }
+
+    // 2. Auth with Google
+    const serviceAccountAuth = new JWT({
+      email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+      key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+      scopes: ['https://www.googleapis.com/auth/spreadsheets'],
     });
 
+    const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID, serviceAccountAuth);
+    
     await doc.loadInfo();
-    const sheet = doc.sheetsByIndex[0]; // Assuming the first tab
-    await sheet.addRow({ Email: email, Date: new Date().toISOString() });
+    const sheet = doc.sheetsByIndex[0];
+    
+    // Make sure your Google Sheet headers match these keys!
+    await sheet.addRow({ 
+      Email: email, 
+      Date: new Date().toLocaleString("es-MX", { timeZone: "America/Tijuana" }) 
+    });
 
-    return { statusCode: 200, body: JSON.stringify({ message: "Email saved!" }) };
+    return { statusCode: 200, body: JSON.stringify({ message: "¡Suscripción exitosa!" }) };
   } catch (error) {
-    return { statusCode: 500, body: JSON.stringify({ error: error.message }) };
+    console.error(error);
+    return { statusCode: 500, body: JSON.stringify({ message: "Error interno", error: error.message }) };
   }
 };
