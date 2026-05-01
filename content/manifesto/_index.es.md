@@ -12,20 +12,20 @@ quote: >-
 
   Si deseas ser parte de Ladies The Gathering, es importante que tengas en cuenta lo siguiente:
 principles:
-  - number: I
+  - number: 1
     title: La Excelencia la amabilidad
     body: Se amable con todas (no sabemos quién de nosotras pueda estar pasando un
       mal momento).
-  - number: II
+  - number: 2
     title: Magia del Respeto
     body: "Respeta a todas y todes, amamos y celebramos la diversidad. Aquí todas
       somos Ladies. "
-  - number: III
+  - number: 3
     title: La Narrativa Primero
     body: Acepta que solo es un juego, si bien es divertido sentir la adrenalina de
       counterear ese spell, la pasión por nuestros decks no debe hacer sentir
       humilladas a nuestras compañeras de mesa.
-  - number: IV
+  - number: 4
     title: No juzgamos
     body: No juzgues a ninguna lady por su apariencia física. La realidad es que
       todas estamos divinas.
