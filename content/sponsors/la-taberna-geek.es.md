@@ -1,6 +1,6 @@
 ---
 title: La Taberna Geek
-image: /images/logo.png
-alt: "la taberna geek: boardgame productions"
-external_url: latabernageek.com
+image: /images/alto-black-low-logo.png
+alt: Obsidian Gear
+external_url: https://www.instagram.com/obsidiangear/
 ---
