@@ -3,7 +3,7 @@ title: The Beginning
 date: 2026-05-14T13:26:00.000-07:00
 author: Lady Vanessa
 category: Historia
-image: /images/logo.png
+image: /images/image-from-email.jpg
 ---
 Once upon a time, there was a young sorceress named Vanessa, whose powers lay in her ability to cast spells through cards. For her, the magical world was a place full of knowledge where she could not only play with her enchantments, but also laugh and learn with her friends from the kingdom. Everything was in relative order; the hours spent exploring her magic with her friends passed quickly. However, as the years went by, laughter became echoes, friends; though loyal and skilled sorcerers faded into the sands of time, the atmosphere sometimes lost its luster, and certain creatures did not appreciate that the kingdom was a beautiful and precious place.
 

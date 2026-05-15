@@ -3,7 +3,7 @@ title: El comienzo
 date: 2026-05-14T13:26:00.000-07:00
 author: Lady Vanessa
 category: Historia
-image: /images/logo.png
+image: /images/image-from-email.jpg
 ---
 Había una vez una joven hechicera llamada Vanessa, cuyos poderes residían en su habilidad para conjurar hechizos a través de cartas. Para ella el mundo mágico era un lugar lleno de conocimiento donde podía no solo jugar con sus encantamientos, sino que también reír y aprender con sus amigos del reino. Todo estaba en relativo orden, las horas explorando su magia con sus amigos pasaban rápido, pero con el paso de los años las risas se volvieron eco, los amigos aunque fieles y buenos hechiceros se perdían entre las arenas del tiempo, el ambiente a veces perdía el brillo y ciertas criaturas no valoraban que el reino fuese un lugar hermoso y preciado. 
 
