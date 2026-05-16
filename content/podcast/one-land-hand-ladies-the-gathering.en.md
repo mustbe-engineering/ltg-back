@@ -1,6 +1,6 @@
 ---
 title: "One Land Hand: Ladies The Gathering"
-date: 2025-04-10T16:45:00.000-07:00
+date: 2025-10-04T16:45:00.000-07:00
 duration: 1 h
 guest: Willy Romo & Luis Mario
 description: The One Land Hand Guys Invite Ladies The Gathering to Talk About
