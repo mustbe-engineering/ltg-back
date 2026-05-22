@@ -2,7 +2,7 @@
 title: Plains & Drinks
 date: 2026-11-20T19:00:00-05:00
 location: La Taberna Real
-description: Una velada relajada de Magic, cócteles y buenas vibras. ¡Trae tu mazo favorito!
+description: 1era edición de Plains & Drinks.
 highlight: true
 icon: sparkles
 type: Social
